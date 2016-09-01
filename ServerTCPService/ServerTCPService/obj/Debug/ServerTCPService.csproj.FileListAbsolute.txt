@@ -1,0 +1,1 @@
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe.config

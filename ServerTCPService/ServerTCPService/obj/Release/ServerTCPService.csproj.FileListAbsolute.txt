@@ -1,0 +1,16 @@
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\ServerTCPService.exe.config
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\ServerTCPService.exe
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\ServerTCPService.pdb
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\Newtonsoft.Json.dll
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\Newtonsoft.Json.xml
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.csprojResolveAssemblyReference.cache
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.Form1.resources
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.Properties.Resources.resources
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.csproj.GenerateResource.Cache
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.exe
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.pdb
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\Asset\KnightAria.mdf
+C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Release\Asset\KnightAria_log.ldf
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Release\ServerTCPService.exe.config
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.exe
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Release\ServerTCPService.pdb
