@@ -1,1 +1,14 @@
 C:\work\sepehr Work\KnightAria\server side tcp\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe.config
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe.config
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Asset\KnightAria.mdf
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Asset\KnightAria_log.ldf
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.pdb
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Newtonsoft.Json.dll
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Newtonsoft.Json.xml
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.csprojResolveAssemblyReference.cache
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.Form1.resources
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.Properties.Resources.resources
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.csproj.GenerateResource.Cache
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.exe
+D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.pdb
