@@ -12,3 +12,16 @@ D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPS
 D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.csproj.GenerateResource.Cache
 D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.exe
 D:\Job\Hooman\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.pdb
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe.config
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.pdb
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Asset\KnightAria.mdf
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Asset\KnightAria_log.ldf
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.exe
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\ServerTCPService.pdb
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\bin\Debug\Newtonsoft.Json.xml
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.csprojResolveAssemblyReference.cache
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.Form1.resources
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.Properties.Resources.resources
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.csproj.GenerateResource.Cache
+C:\Users\LM\Documents\GitHub\serverTcpLM\ServerTCPService\ServerTCPService\obj\Debug\ServerTCPService.exe

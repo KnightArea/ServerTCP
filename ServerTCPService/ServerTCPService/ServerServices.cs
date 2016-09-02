@@ -57,7 +57,9 @@ namespace ServerTCPService
             switch(request.FuncName)
             {
                 case "Register":
-                    result = Register((Register_Params)request.Params);
+                    Register_Params par = 
+                        (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
+                    result = Register(par);
                     break;
                 default:
                     break;
@@ -99,17 +101,25 @@ namespace ServerTCPService
                     cmm.Parameters.AddWithValue("EmailAdress", rp.EmailAdress);
                     cmm.Parameters.AddWithValue("Phonenumber", rp.PhoneNumber);
                 }
-                if(cnn.State != ConnectionState.Open)
+                try
                 {
-                    cnn.Open();
+                    if (cnn.State != ConnectionState.Open)
+                    {
+                        cnn.Open();
+                    }
                 }
+                catch { }
                 object insertedId = cmm.ExecuteScalar();
-                if(cnn.State != ConnectionState.Closed)
+                try
                 {
-                    cnn.Close();
+                    if (cnn.State != ConnectionState.Closed)
+                    {
+                        cnn.Close();
+                    }
                 }
+                catch { }
                 rt.state = true;
-                rt.retVal = insertedId;
+                rt.retVal = insertedId.ToString() ;
             }
             catch(Exception e)
             {
