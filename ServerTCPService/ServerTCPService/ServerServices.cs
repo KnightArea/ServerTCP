@@ -15,8 +15,8 @@ namespace ServerTCPService
     
     public struct RequestType
     {
-        public string FuncName{ get; set; }
-        public object Params { get; set; }
+        public string funcName{ get; set; }
+        public object param { get; set; }
     }
 
     public struct ResponseType
@@ -44,7 +44,7 @@ namespace ServerTCPService
         {
             string result = "";
             ResponseType rt = new ResponseType();
-            rt.retVal = request.FuncName;
+            rt.retVal = request.funcName;
             //rt.functions = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory()+"\\t.txt");
             result = JsonConvert.SerializeObject(rt);
             HasResponse = true;
@@ -54,11 +54,11 @@ namespace ServerTCPService
         public static string Start(RequestType request, out bool HasResponse)
         {
             string result = "";
-            switch(request.FuncName)
+            switch(request.funcName)
             {
                 case "Register":
                     Register_Params par = 
-                        (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
+                        (Register_Params)JsonConvert.DeserializeObject(request.param.ToString(), typeof(Register_Params));
                     result = Register(par);
                     break;
                 default:
