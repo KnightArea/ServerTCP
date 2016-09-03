@@ -76,7 +76,7 @@ namespace ServerTCPService
             cmm.Connection = cnn;
             try
             {
-                if (rp.isGuest == true)
+                if (rp.IsGuest == true)
                 {
                     cmm.CommandText = "INSERT INTO UserIdentifier (Latitude,Longitude,TeamColor,TeamTitle) output inserted.id"+
                         " Values (" +
@@ -86,7 +86,7 @@ namespace ServerTCPService
                     cmm.Parameters.AddWithValue("TeamColor", rp.TeamColor);
                     cmm.Parameters.AddWithValue("TeamTitle", rp.TeamTitle);
                 }
-                else if (rp.isGuest == false)
+                else if (rp.IsGuest == false)
                 {
                     cmm.CommandText = "INSERT INTO UserIdentifier (Latitude,Longitude,TeamColor,TeamTitle,Name,EmailAdress"+
                     ",Phonenumber) output inserted.id Values (" +
