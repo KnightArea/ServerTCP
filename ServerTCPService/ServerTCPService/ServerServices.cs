@@ -15,8 +15,8 @@ namespace ServerTCPService
     
     public struct RequestType
     {
-        public string FuncName{ get; set; }
-        public object Params { get; set; }
+        public string funcName{ get; set; }
+        public object param { get; set; }
     }
 
     public struct ResponseType
@@ -44,7 +44,7 @@ namespace ServerTCPService
         {
             string result = "";
             ResponseType rt = new ResponseType();
-            rt.retVal = request.FuncName;
+            rt.retVal = request.funcName;
             //rt.functions = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory()+"\\t.txt");
             result = JsonConvert.SerializeObject(rt);
             HasResponse = true;
@@ -54,12 +54,10 @@ namespace ServerTCPService
         public static string Start(RequestType request, out bool HasResponse)
         {
             string result = "";
-            switch(request.FuncName)
+            switch(request.funcName)
             {
                 case "Register":
-                    Register_Params par = 
-                        (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
-                    result = Register(par);
+                    result = Register((Register_Params)request.param);
                     break;
                 default:
                     break;
@@ -101,25 +99,17 @@ namespace ServerTCPService
                     cmm.Parameters.AddWithValue("EmailAdress", rp.EmailAdress);
                     cmm.Parameters.AddWithValue("Phonenumber", rp.PhoneNumber);
                 }
-                try
+                if(cnn.State != ConnectionState.Open)
                 {
-                    if (cnn.State != ConnectionState.Open)
-                    {
-                        cnn.Open();
-                    }
+                    cnn.Open();
                 }
-                catch { }
                 object insertedId = cmm.ExecuteScalar();
-                try
+                if(cnn.State != ConnectionState.Closed)
                 {
-                    if (cnn.State != ConnectionState.Closed)
-                    {
-                        cnn.Close();
-                    }
+                    cnn.Close();
                 }
-                catch { }
                 rt.state = true;
-                rt.retVal = insertedId.ToString() ;
+                rt.retVal = insertedId;
             }
             catch(Exception e)
             {
