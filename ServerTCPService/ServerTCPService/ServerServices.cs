@@ -34,7 +34,7 @@ namespace ServerTCPService
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string TeamColor { get; set; }
-        public bool isGuest { get; set; }
+        public bool IsGuest { get; set; }
     }
 
     class ServerServices
