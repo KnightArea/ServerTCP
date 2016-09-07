@@ -177,9 +177,7 @@ namespace ServerTCPService
                 {
                     try
                     {
-                        int xx = m_clientSocket.Send(Encoding.UTF8.GetBytes(clientResponse));
-                        //sepi khate bala ersal mikone javabeto
-                        //client response ham javabete va xx tedade byte haiie ke ersal shode
+                        m_clientSocket.Send(Encoding.UTF8.GetBytes(clientResponse));
                         
                         if (onClientServed != null)
                         {

@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace ServerTCPService
 {
-    
+    #region Global Request and Response Class definition
     public struct RequestType
     {
         public string FuncName{ get; set; }
@@ -24,47 +24,119 @@ namespace ServerTCPService
         public object retVal { get; set; }
         public bool state { get; set; }
     }
+    #endregion
 
+    #region Register Parameters Def
     struct Register_Params
     {
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+    }
+
+    #endregion
+
+    #region UpdateUserInformation Parameters Def
+    struct UpdateUserInformation_Params
+    {
+        public string ID { get; set; }
         public string Name { get; set; }
         public string TeamTitle { get; set; }
         public string EmailAdress { get; set; }
         public string PhoneNumber { get; set; }
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
         public string TeamColor { get; set; }
-        public bool isGuest { get; set; }
     }
 
+    #endregion
     class ServerServices
     {
-        
-        public static string test(RequestType request,out bool HasResponse)
-        {
-            string result = "";
-            ResponseType rt = new ResponseType();
-            rt.retVal = request.FuncName;
-            //rt.functions = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory()+"\\t.txt");
-            result = JsonConvert.SerializeObject(rt);
-            HasResponse = true;
-            return result;
-        }
-
         public static string Start(RequestType request, out bool HasResponse)
         {
             string result = "";
             switch(request.FuncName)
             {
                 case "Register":
-                    Register_Params par = 
+                    Register_Params Rpar = 
                         (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
-                    result = Register(par);
+                    result = Register(Rpar);
+                    break;
+                case "UpdateUserInformation":
+                    UpdateUserInformation_Params UUIpar =
+                        (UpdateUserInformation_Params)JsonConvert.DeserializeObject(request.Params.ToString(),
+                                                                                     typeof(UpdateUserInformation_Params));
+                    result = UpdateUserInformation(UUIpar);
                     break;
                 default:
                     break;
             }
             HasResponse = true;
+            return result;
+        }
+
+        private static string UpdateUserInformation(UpdateUserInformation_Params uuip)
+        {
+            string result = "";
+
+            ResponseType rt = new ResponseType();
+            SqlConnection cnn = new SqlConnection(Properties.Settings.Default.__connection);
+            SqlCommand cmm = new SqlCommand();
+            cmm.Connection = cnn;
+            try
+            {
+
+                cmm.CommandText = "UPDATE UserIdentifier SET TeamColor=@TeamColor,TeamTitle=@TeamTitle,"+
+                    "Name=@Name,EmailAdress=@EmailAdress,Phonenumber=@Phonenumber"+
+                    " WHERE id=@id";
+                cmm.Parameters.AddWithValue("TeamColor", uuip.TeamColor);
+                cmm.Parameters.AddWithValue("TeamTitle", uuip.TeamTitle);
+                cmm.Parameters.AddWithValue("Name", uuip.Name);
+                cmm.Parameters.AddWithValue("EmailAdress", uuip.EmailAdress);
+                cmm.Parameters.AddWithValue("Phonenumber", uuip.PhoneNumber);
+                cmm.Parameters.AddWithValue("id", uuip.ID);
+
+
+
+                try
+                {
+                    if (cnn.State != ConnectionState.Open)
+                    {
+                        cnn.Open();
+                    }
+                }
+                catch { }
+                int rowEffected = cmm.ExecuteNonQuery();
+                try
+                {
+                    if (cnn.State != ConnectionState.Closed)
+                    {
+                        cnn.Close();
+                    }
+                }
+                catch { }
+                if (rowEffected > 0)
+                {
+                    rt.state = true;
+                    rt.retVal = "done";
+                }
+                else
+                {
+                    rt.state = false;
+                    rt.retVal = "no user founded";
+                }
+            }
+            catch (Exception e)
+            {
+                rt.state = false;
+                rt.retVal = e.Message;
+            }
+            try
+            {
+                result = JsonConvert.SerializeObject(rt, typeof(ResponseType), new JsonSerializerSettings());
+            }
+            catch (Exception e)
+            {
+                result = "error : " + e.Message;
+            }
+
             return result;
         }
 
@@ -78,29 +150,15 @@ namespace ServerTCPService
             cmm.Connection = cnn;
             try
             {
-                if (rp.isGuest == true)
-                {
-                    cmm.CommandText = "INSERT INTO UserIdentifier (Latitude,Longitude,TeamColor,TeamTitle) output inserted.id"+
-                        " Values (" +
-                        "@Latitude,@Longitude,@TeamColor,@TeamTitle)";
-                    cmm.Parameters.AddWithValue("Latitude", rp.Latitude);
-                    cmm.Parameters.AddWithValue("Longitude", rp.Longitude);
-                    cmm.Parameters.AddWithValue("TeamColor", rp.TeamColor);
-                    cmm.Parameters.AddWithValue("TeamTitle", rp.TeamTitle);
-                }
-                else if (rp.isGuest == false)
-                {
-                    cmm.CommandText = "INSERT INTO UserIdentifier (Latitude,Longitude,TeamColor,TeamTitle,Name,EmailAdress"+
-                    ",Phonenumber) output inserted.id Values (" +
-                        "@Latitude,@Longitude,@TeamColor,@TeamTitle,@Name,@EmailAdress,@Phonenumber)";
-                    cmm.Parameters.AddWithValue("Latitude", rp.Latitude);
-                    cmm.Parameters.AddWithValue("Longitude", rp.Longitude);
-                    cmm.Parameters.AddWithValue("TeamColor", rp.TeamColor);
-                    cmm.Parameters.AddWithValue("TeamTitle", rp.TeamTitle);
-                    cmm.Parameters.AddWithValue("Name", rp.Name);
-                    cmm.Parameters.AddWithValue("EmailAdress", rp.EmailAdress);
-                    cmm.Parameters.AddWithValue("Phonenumber", rp.PhoneNumber);
-                }
+
+                cmm.CommandText = "INSERT INTO UserIdentifier (Latitude,Longitude) output inserted.id" +
+                    " Values (" +
+                    "@Latitude,@Longitude)";
+                cmm.Parameters.AddWithValue("Latitude", rp.Latitude);
+                cmm.Parameters.AddWithValue("Longitude", rp.Longitude);
+
+               
+
                 try
                 {
                     if (cnn.State != ConnectionState.Open)
@@ -119,9 +177,9 @@ namespace ServerTCPService
                 }
                 catch { }
                 rt.state = true;
-                rt.retVal = insertedId.ToString() ;
+                rt.retVal = insertedId.ToString();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 rt.state = false;
                 rt.retVal = e.Message;
