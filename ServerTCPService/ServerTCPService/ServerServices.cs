@@ -15,8 +15,8 @@ namespace ServerTCPService
     #region Global Request and Response Class definition
     public struct RequestType
     {
-        public string funcName{ get; set; }
-        public object param { get; set; }
+        public string FuncName{ get; set; }
+        public object Params { get; set; }
     }
 
     public struct ResponseType
@@ -44,37 +44,17 @@ namespace ServerTCPService
         public string EmailAdress { get; set; }
         public string PhoneNumber { get; set; }
         public string TeamColor { get; set; }
-<<<<<<< HEAD
-=======
-        public bool IsGuest { get; set; }
->>>>>>> origin/master
     }
 
     #endregion
     class ServerServices
     {
-<<<<<<< HEAD
-=======
-        
-        public static string test(RequestType request,out bool HasResponse)
-        {
-            string result = "";
-            ResponseType rt = new ResponseType();
-            rt.retVal = request.funcName;
-            //rt.functions = System.IO.File.ReadAllText(System.IO.Directory.GetCurrentDirectory()+"\\t.txt");
-            result = JsonConvert.SerializeObject(rt);
-            HasResponse = true;
-            return result;
-        }
-
->>>>>>> origin/master
         public static string Start(RequestType request, out bool HasResponse)
         {
             string result = "";
-            switch(request.funcName)
+            switch(request.FuncName)
             {
                 case "Register":
-<<<<<<< HEAD
                     Register_Params Rpar = 
                         (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
                     result = Register(Rpar);
@@ -84,11 +64,6 @@ namespace ServerTCPService
                         (UpdateUserInformation_Params)JsonConvert.DeserializeObject(request.Params.ToString(),
                                                                                      typeof(UpdateUserInformation_Params));
                     result = UpdateUserInformation(UUIpar);
-=======
-                    Register_Params par = 
-                        (Register_Params)JsonConvert.DeserializeObject(request.param.ToString(), typeof(Register_Params));
-                    result = Register(par);
->>>>>>> origin/master
                     break;
                 default:
                     break;
@@ -107,7 +82,6 @@ namespace ServerTCPService
             cmm.Connection = cnn;
             try
             {
-<<<<<<< HEAD
 
                 cmm.CommandText = "UPDATE UserIdentifier SET TeamColor=@TeamColor,TeamTitle=@TeamTitle,"+
                     "Name=@Name,EmailAdress=@EmailAdress,Phonenumber=@Phonenumber"+
@@ -122,22 +96,15 @@ namespace ServerTCPService
 
 
                 try
-=======
-                if (rp.IsGuest == true)
->>>>>>> origin/master
                 {
                     if (cnn.State != ConnectionState.Open)
                     {
                         cnn.Open();
                     }
                 }
-<<<<<<< HEAD
                 catch { }
                 int rowEffected = cmm.ExecuteNonQuery();
                 try
-=======
-                else if (rp.IsGuest == false)
->>>>>>> origin/master
                 {
                     if (cnn.State != ConnectionState.Closed)
                     {
