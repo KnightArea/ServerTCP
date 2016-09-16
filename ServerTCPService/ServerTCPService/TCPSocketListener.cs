@@ -193,7 +193,12 @@ namespace ServerTCPService
                 clientResponse = "";
                 ClientRequest = "";
             }
-            catch { }
+            catch(Exception ee) 
+            {
+                int x = 12;
+                x = 13 - x;
+            }
+        
         }
 
         /// <summary>

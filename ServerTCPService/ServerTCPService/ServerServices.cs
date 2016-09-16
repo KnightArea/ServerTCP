@@ -52,22 +52,30 @@ namespace ServerTCPService
         public static string Start(RequestType request, out bool HasResponse)
         {
             string result = "";
-            switch(request.FuncName)
-            {
-                case "Register":
-                    Register_Params Rpar = 
-                        (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
-                    result = Register(Rpar);
-                    break;
-                case "UpdateUserInformation":
-                    UpdateUserInformation_Params UUIpar =
-                        (UpdateUserInformation_Params)JsonConvert.DeserializeObject(request.Params.ToString(),
-                                                                                     typeof(UpdateUserInformation_Params));
-                    result = UpdateUserInformation(UUIpar);
-                    break;
-                default:
-                    break;
+            try
+            {                
+                switch (request.FuncName)
+                {
+                    case "Register":
+                        Register_Params Rpar =
+                            (Register_Params)JsonConvert.DeserializeObject(request.Params.ToString(), typeof(Register_Params));
+                        result = Register(Rpar);
+                        break;
+                    case "UpdateUserInformation":
+                        UpdateUserInformation_Params UUIpar =
+                            (UpdateUserInformation_Params)JsonConvert.DeserializeObject(request.Params.ToString(),
+                                                                                         typeof(UpdateUserInformation_Params));
+                        result = UpdateUserInformation(UUIpar);
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch 
+            {
+                result = "error in parameter format";
+            }
+
             HasResponse = true;
             return result;
         }
